@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.2. Preparing Data &#8212; Notas de Estudo - Deep Learning</title>
+    <title>Preparing Data &#8212; Notas de Estudo - Deep Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Outro teste" href="11-02-preparing-data-02.html" />
     <link rel="prev" title="&lt;no title&gt;" href="11-01-natural-language-02.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -115,7 +116,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="11-00-deep-learning-for-text.html">
-   1. Deep Learning para Textos
+   Deep Learning para Textos
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -125,12 +126,22 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="11-01-natural-language.html">
-     1.1. Processamento de linguagem natural: a visão panorâmica
+     Processamento de linguagem natural: a visão panorâmica
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.2. Preparing Data
+     Preparing Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-02-preparing-data-02.html">
+     Outro teste
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-03-two-approaches.html">
+     Two approaches for representing groups of words: Sets and sequences
     </a>
    </li>
   </ul>
@@ -315,7 +326,24 @@ title="Print to PDF"
               <div>
                 
   <section id="preparing-data">
-<h1><span class="section-number">1.2. </span>Preparing Data<a class="headerlink" href="#preparing-data" title="Permalink to this headline">#</a></h1>
+<h1>Preparing Data<a class="headerlink" href="#preparing-data" title="Permalink to this headline">#</a></h1>
+<p>Como os modelos de deep learning são funções diferenciáveis, só podem processar tensores numéricos: ou seja, não podem receber text puro como entrada. Por isso, o primeiro passo consiste em vetorizar os texto à serem submetidos à NLP.</p>
+<div class="admonition-vetorizacao-de-textos admonition">
+<p class="admonition-title">Vetorização de textos</p>
+<p><em>Vetorizar</em> um texto é o processo de transformar texto em tensores numéricos.</p>
+</div>
+<p>O processo de vetorização pode ser feitor de inúmeras formas mas, de um ponto de vista geral, seguem o mesmo template:</p>
+<ul class="simple">
+<li><p>Primeiro, vou <em>padroniza</em> o texto para facilitar o processamento, como remoção de pontuação e conversão para lowercase</p></li>
+<li><p>Após isso, você divide o texto em unidades (chamadas <em>tokens</em>), como caracteres, palavras ou grupos de palavras. Esse processo é chamado de <em>tokenização</em>.</p></li>
+<li><p>Por último, você converte o token em um vetor numérico. Geralmente, esse processo envolve indexar todos os tokens presente nos dados.</p></li>
+</ul>
+<figure class="align-default" id="my-fig-ref">
+<a class="reference internal image-reference" href="../../_images/11_01.png"><img alt="../../_images/11_01.png" src="../../_images/11_01.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">From raw text to vectors!</span><a class="headerlink" href="#my-fig-ref" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 
     <script type="text/x-thebe-config">
@@ -351,6 +379,13 @@ title="Print to PDF"
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">&lt;no title&gt;</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="11-02-preparing-data-02.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Outro teste</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
