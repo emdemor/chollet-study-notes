@@ -4,22 +4,10 @@
 format: jb-book
 root: intro
 options: # The options key will be applied to all chapters, but not sub-sections
-  numbered: True
-parts:
-  - caption: Redes Neurais Convolucionais
-    numbered: true
-    chapters:
-      - file: content/cnn/week01/00-intro
-        sections:
-          - file: content/cnn/week01/01-lecture-notes
-          - file: content/cnn/week01/02-programing-assignment-1
-          - file: content/cnn/week01/02-programing-assignment-2
-      - file: codigo
-  - caption: Redes Neurais Recorrentes
-    numbered: true
-    chapters:
-      - file: content/rnn/week01/00-intro
-        sections:
-          - file: content/rnn/week01/01-lecture-notes
-          - file: content/rnn/week01/02-programing-assignment-1
-          - file: content/rnn/week01/02-programing-assignment-2
+    numbered: True
+chapters:
+- file: content/11-deep-learning-for-text/11-00-deep-learning-for-text
+  sections:
+  - file: content/11-deep-learning-for-text/11-01-natural-language
+  - file: content/11-deep-learning-for-text/11-01-natural-language-02
+  - file: content/11-deep-learning-for-text/11-02-preparing-data
