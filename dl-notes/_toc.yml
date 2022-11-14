@@ -3,11 +3,13 @@
 
 format: jb-book
 root: intro
-options: # The options key will be applied to all chapters, but not sub-sections
-    numbered: True
+# options: # The options key will be applied to all chapters, but not sub-sections
+#     numbered: True
 chapters:
 - file: content/11-deep-learning-for-text/11-00-deep-learning-for-text
   sections:
   - file: content/11-deep-learning-for-text/11-01-natural-language
   - file: content/11-deep-learning-for-text/11-01-natural-language-02
   - file: content/11-deep-learning-for-text/11-02-preparing-data
+  - file: content/11-deep-learning-for-text/11-02-preparing-data-02
+  - file: content/11-deep-learning-for-text/11-03-two-approaches

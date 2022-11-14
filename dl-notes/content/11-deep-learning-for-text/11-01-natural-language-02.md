@@ -4,7 +4,7 @@ Esses sistemas construídos com regras feitas a mão se mantiveram como a aborda
 
 `````{admonition} NLP
 :class: tip
-É disso que trata a NLP moderna: usar aprendizado de máquina e grandes conjuntos de dados para dar aos computadores a capacidade, não de entender a linguagem, que é um objetivo mais elevado, mas ingerir uma parte da linguagem como entrada e retornar algo útil.
+É disso que se trata a NLP moderna: usar aprendizado de máquina e grandes conjuntos de dados para dar aos computadores a capacidade, não de entender a linguagem, que é um objetivo mais elevado, mas ingerir uma parte da linguagem como entrada e retornar algo útil.
 `````
 
 Exemplos de saídas úteis à partir de técnicas de NLP são:
