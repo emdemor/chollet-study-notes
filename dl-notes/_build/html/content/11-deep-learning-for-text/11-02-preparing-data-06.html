@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>NLP: adotando Machine Learning &#8212; Notas de Estudo - Deep Learning</title>
+    <title>Usando a camada TextVectorization em uma pipeline tf.data ou como parte de um modelo &#8212; Notas de Estudo - Deep Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="11.2 Preparing Data" href="11-02-preparing-data-01.html" />
-    <link rel="prev" title="11.1 Processamento de linguagem natural: a visão panorâmica" href="11-01-natural-language-01.html" />
+    <link rel="next" title="11.3 Duas abordagens para representar grupo de palavras" href="11-03-two-approaches.html" />
+    <link rel="prev" title="11.2.4 Usando a camada de TextVectorization" href="11-02-preparing-data-05.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -129,8 +129,8 @@ const thebe_selector_output = ".output, .cell_output"
      11.1 Processamento de linguagem natural: a visão panorâmica
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-01-natural-language-02.html">
      NLP: adotando Machine Learning
     </a>
    </li>
@@ -159,8 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
      11.2.4  Usando a camada de TextVectorization
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="11-02-preparing-data-06.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Usando a camada
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -273,7 +273,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/emdemor/Notas de Machine Learning/issues/new?title=Issue%20on%20page%20%2Fcontent/11-deep-learning-for-text/11-01-natural-language-02.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/emdemor/Notas de Machine Learning/issues/new?title=Issue%20on%20page%20%2Fcontent/11-deep-learning-for-text/11-02-preparing-data-06.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -301,7 +301,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/content/11-deep-learning-for-text/11-01-natural-language-02.md"
+        <a href="../../_sources/content/11-deep-learning-for-text/11-02-preparing-data-06.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -350,7 +350,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>NLP: adotando Machine Learning</h1>
+                <h1>Usando a camada TextVectorization em uma pipeline tf.data ou como parte de um modelo</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -362,27 +362,27 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="nlp-adotando-machine-learning">
-<h1>NLP: adotando Machine Learning<a class="headerlink" href="#nlp-adotando-machine-learning" title="Permalink to this headline">#</a></h1>
-<p>Esses sistemas construídos com regras feitas a mão se mantiveram como a abordagem dominante até a década de 1990. Mas a partir do final da década de 1980, computadores mais rápidos e maior disponibilidade de dados começaram a possibilitar uma alternativa melhor. Quando você se encontra construindo sistemas que são grandes pilhas de regras ad hoc, como um engenheiro inteligente, você provavelmente começará a perguntar: “Eu poderia usar um corpus de dados para automatizar o processo de encontrar essas regras? Eu poderia procurar as regras dentro de algum tipo de espaço de regras, em vez de ter que criá-las eu mesmo?” E assim, você se formou para fazer machine learning. E assim, no final da década de 1980, começamos a ver abordagens de aprendizado de máquina para processamento de linguagem natural. Os primeiros eram baseados em árvores de decisão - a intenção era literalmente automatizar a desenvolvimento do tipo de regras if/then/else dos sistemas anteriores. Então abordagens estatísticas começaram a ganhar velocidade, começando pela regressão logística. Com o tempo, os modelos com parâmetros “aprendidos” assumiram totalmente o controle, e a linguística passou a ser vista mais como um obstáculo do que como uma ferramenta útil. Frederick Jelinek, um dos primeiros pesquisadores de reconhecimento de fala, brincou na década de 1990: “Toda vez que eu demito um linguista, o desempenho do reconhecedor de fala aumenta”.</p>
-<div class="tip admonition">
-<p class="admonition-title">NLP</p>
-<p>É disso que se trata a NLP moderna: usar aprendizado de máquina e grandes conjuntos de dados para dar aos computadores a capacidade, não de entender a linguagem, que é um objetivo mais elevado, mas ingerir uma parte da linguagem como entrada e retornar algo útil.</p>
+  <section id="usando-a-camada-textvectorization-em-uma-pipeline-tf-data-ou-como-parte-de-um-modelo">
+<h1>Usando a camada <code class="docutils literal notranslate"><span class="pre">TextVectorization</span></code> em uma pipeline <code class="docutils literal notranslate"><span class="pre">tf.data</span></code> ou como parte de um modelo<a class="headerlink" href="#usando-a-camada-textvectorization-em-uma-pipeline-tf-data-ou-como-parte-de-um-modelo" title="Permalink to this headline">#</a></h1>
+<p>É importante ter em mente que, como <code class="docutils literal notranslate"><span class="pre">TextVectorization</span></code> é uma operação de busca em dicionários, ela não pode ser executada em uma GPU (ou TPU); somente em CPU. Portanto, se você está treinando um modelo em uma GPU, sua camada <code class="docutils literal notranslate"><span class="pre">TextVectorization</span></code> antes de enviar seu output para a GPU. Isso tem importantes implicações de performance.</p>
+<p>Existem duas formas de se usar a camada <code class="docutils literal notranslate"><span class="pre">TextVectorization</span></code>. A primeira opção é usar na pipeline <code class="docutils literal notranslate"><span class="pre">tf.data</span></code>, assim:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">int_sequence_dataset</span> <span class="o">=</span> <span class="n">string_dataset</span><span class="o">.</span><span class="n">map</span><span class="p">(</span>
+    <span class="n">text_vectorization</span><span class="p">,</span>
+    <span class="n">num_parallel_calls</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
 </div>
-<p>Exemplos de saídas úteis à partir de técnicas de NLP são:</p>
-<ul class="simple">
-<li><p>“Qual o assunto desse texto?” (categorização de texto)</p></li>
-<li><p>“Esse texto contém algum tipo de abuso?” (filtragem de conteúdo)</p></li>
-<li><p>“Esse texto é positivo ou negativo?” (análise de sentimento)</p></li>
-<li><p>“Quais são as próximas palavras dessa sentença incompleta?” (modelo de linguagem)</p></li>
-<li><p>“Como você diria isso em Alemão?” (tradução)</p></li>
-<li><p>“Como você resumiria o texto em um parágrafo?” (sumarização)</p></li>
-<li><p>etc.</p></li>
-</ul>
-<p>É importante que fique claro que os modelos de processamento textuais não possuem uma capacidade de compreensão tal como a mente humana: eles simplesmente aprendem padrões presentes nos dados de entrada.</p>
-<p>Ainda que os modelos de reconhecimento de textos, dependentes de arvores de decisão ou regressão logística, tivessem eficiência superior aos sistemas de regras linguísticas impostas, eles pouco evoluíram no intervalo entre 1990 e 2013. Nesse tempo, muito das melhorias eram conseguidas com aprimoramentos das etapas de feature-engineering. Porém, as coisas começaram a mudar a partir de 2014: muitos pesquisadores passaram à investigar a capacidade de ser “entender” a linguagem com a utilização de redes neurais artificiais - mais especificamente, a LSTM.</p>
-<p>No começo de 2015, Keras disponibilizou a primeira implementação user-friendly do LSTM. Então, de 2015 à 2017, Redes Neurais Recorrentes dominaram o cenário de NLP. Modelos de LSTM bidirecionais, em particular, se tornaram o estado da arte para muitas tarefas importantes.</p>
-<p>Finalmente, por volta de 2017-2018, uma nova arquitetura apareceu para substituir RNNs: os transformers. Transformers deram origem a progressos consideráveis em um período de tempo bastante curto.</p>
+<p>A segunda opção é fazer com que a camada <code class="docutils literal notranslate"><span class="pre">TextVectorization</span></code> seja parte do modelo (afinal de contas, é também uma camada do Keras):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">text_input</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(),</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;string&quot;</span><span class="p">)</span>
+<span class="n">vectorized_text</span> <span class="o">=</span> <span class="n">text_vectorization</span><span class="p">(</span><span class="n">text_input</span><span class="p">)</span>
+<span class="n">embedded_input</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="o">...</span><span class="p">)(</span><span class="n">vectorized_text</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="n">text_input</span><span class="p">,</span> <span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Há uma diferença importante entre os dois: se a etapa de vetorização fizer parte do modelo, ela acontecerá de forma síncrona com o restante das etapas. Isso significa que a cada etapa de treinamento, o restante do modelo (colocado na GPU) terá que esperar que a saída da camada TextVectorization (colocada na CPU) esteja pronta para começar a trabalhar. Enquanto isso, colocar a camada no pipeline tf.data permite que você faça o pré-processamento assíncrono de seus dados na CPU: enquanto a GPU executa o modelo em um batch de dados vetorizados, a CPU fica ocupada vetorizando o próximo batch de strings brutas.</p>
+<p>Portanto, se você estiver treinando o modelo em GPU ou TPU, provavelmente desejará usar a primeira opção para obter o melhor desempenho. Isto é o que faremos em todos os exemplos práticos ao longo deste capítulo. Ao treinar em uma CPU, no entanto, o processamento síncrono é bom: você obterá 100% de utilização de seus núcleos, independentemente da opção escolhida.</p>
+<p>Agora, se você exportasse nosso modelo para um ambiente de produção, você desejaria enviar um modelo que aceitasse strings brutas como entrada, como no trecho de código para a segunda opção acima - caso contrário, você teria que reimplementar a padronização de texto e tokenização em seu ambiente de produção (talvez em JavaScript?), e correria o risco de introduzir pequenas discrepâncias de pré-processamento que prejudicariam a precisão do modelo. Felizmente, a camada TextVectorization permite que você inclua o pré-processamento de texto diretamente em seu modelo, facilitando a implantação, mesmo se você estiver usando originalmente a camada como parte de um pipeline tf.data.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -412,17 +412,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="11-01-natural-language-01.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="11-02-preparing-data-05.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">11.1 Processamento de linguagem natural: a visão panorâmica</p>
+            <p class="prev-next-title">11.2.4  Usando a camada de TextVectorization</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="11-02-preparing-data-01.html" title="next page">
+    <a class='right-next' id="next-link" href="11-03-two-approaches.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">11.2 Preparing Data</p>
+        <p class="prev-next-title">11.3 Duas abordagens para representar grupo de palavras</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
