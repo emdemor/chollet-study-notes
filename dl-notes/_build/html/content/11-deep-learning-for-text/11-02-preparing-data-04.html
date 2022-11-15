@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>11.3 Duas abordagens para representar grupo de palavras &#8212; Notas de Estudo - Deep Learning</title>
+    <title>11.2.3 Indexação de vocabulário &#8212; Notas de Estudo - Deep Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="11.2.4 Usando a camada de TextVectorization" href="11-02-preparing-data-05.html" />
+    <link rel="next" title="11.2.4 Usando a camada de TextVectorization" href="11-02-preparing-data-05.html" />
+    <link rel="prev" title="11.2.2 Tokenização" href="11-02-preparing-data-03.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -148,8 +149,8 @@ const thebe_selector_output = ".output, .cell_output"
      11.2.2 Tokenização
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="11-02-preparing-data-04.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      11.2.3 Indexação de vocabulário
     </a>
    </li>
@@ -158,8 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
      11.2.4  Usando a camada de TextVectorization
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-03-two-approaches.html">
      11.3 Duas abordagens para representar grupo de palavras
     </a>
    </li>
@@ -255,7 +256,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/emdemor/Notas de Machine Learning/issues/new?title=Issue%20on%20page%20%2Fcontent/11-deep-learning-for-text/11-03-two-approaches.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/emdemor/Notas de Machine Learning/issues/new?title=Issue%20on%20page%20%2Fcontent/11-deep-learning-for-text/11-02-preparing-data-04.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -283,7 +284,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/content/11-deep-learning-for-text/11-03-two-approaches.md"
+        <a href="../../_sources/content/11-deep-learning-for-text/11-02-preparing-data-04.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -320,60 +321,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bag-of-words-e-word-embeddings">
-   Bag-of-words e word-embeddings
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>11.3 Duas abordagens para representar grupo de palavras</h1>
+                <h1>11.2.3 Indexação de vocabulário</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bag-of-words-e-word-embeddings">
-   Bag-of-words e word-embeddings
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -381,12 +345,63 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="duas-abordagens-para-representar-grupo-de-palavras">
-<h1>11.3 Duas abordagens para representar grupo de palavras<a class="headerlink" href="#duas-abordagens-para-representar-grupo-de-palavras" title="Permalink to this headline">#</a></h1>
-<section id="bag-of-words-e-word-embeddings">
-<h2>Bag-of-words e word-embeddings<a class="headerlink" href="#bag-of-words-e-word-embeddings" title="Permalink to this headline">#</a></h2>
-<p>Teste</p>
-</section>
+  <section id="indexacao-de-vocabulario">
+<h1>11.2.3 Indexação de vocabulário<a class="headerlink" href="#indexacao-de-vocabulario" title="Permalink to this headline">#</a></h1>
+<p>Agora que o texto foi separado em tokens, você precisa encodar cada token em uma representação numérica. Você poderia fazer isso de uma forma independente de estado, tal como hash-ando cada token em um vetor binário fixo, mas na prática, a forma como você lida com isso é construindo uma indexação de todos os termos encontrados nos dados de treino (chamado de <em>vocabulário</em>) e associar um valor inteiro único a cada entrada do vocabulário. Por exemplo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">unicodedata</span>
+
+
+<span class="k">def</span> <span class="nf">remove_punctuation</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">input_string</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span>
+        <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">fromkeys</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
+    <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">remove_accents</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s2">&quot;NFD&quot;</span><span class="p">,</span> <span class="n">input_string</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;Mn&quot;</span>
+    <span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">standardize</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">strip_accents</span><span class="p">(</span><span class="n">remove_punctuation</span><span class="p">(</span><span class="n">input_string</span><span class="p">))</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">input_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;A garota foi até a praia.&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Onde estão meus amigos?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Acho que eles já foram embora!!!&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">vocabulary</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">dataset</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">standardize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="n">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">token</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">vocabulary</span><span class="p">:</span>
+            <span class="n">vocabulary</span><span class="p">[</span><span class="n">token</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Nesse caso, o vocabulário indexado será:</p>
+<p><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">&quot;a&quot;:</span> <span class="pre">0,</span> <span class="pre">&quot;garota&quot;:</span> <span class="pre">1,</span> <span class="pre">&quot;foi&quot;:</span> <span class="pre">2,</span> <span class="pre">&quot;ate&quot;:</span> <span class="pre">3,</span> <span class="pre">&quot;praia&quot;:</span> <span class="pre">4,</span> <span class="pre">&quot;onde&quot;:</span> <span class="pre">5,</span> <span class="pre">&quot;estao&quot;:</span> <span class="pre">6,</span> <span class="pre">&quot;meus&quot;:</span> <span class="pre">7,</span> <span class="pre">&quot;amigos&quot;:</span> <span class="pre">8,</span> <span class="pre">&quot;acho&quot;:</span> <span class="pre">9,</span> <span class="pre">&quot;que&quot;:</span> <span class="pre">10,</span> <span class="pre">&quot;eles&quot;:</span> <span class="pre">11,</span> <span class="pre">&quot;ja&quot;:</span> <span class="pre">12,</span> <span class="pre">&quot;foram&quot;:</span> <span class="pre">13,</span> <span class="pre">&quot;embora&quot;:</span> <span class="pre">14,</span> <span class="pre">}</span></code></p>
+<p>Então, você pode converter o vocabulário indexado em um vetor encodado que pode ser processado por uma rede neural, tal como um vetor one-hot:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">one_hot_encode_token</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+    <span class="n">vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">),))</span>
+    <span class="n">token_index</span> <span class="o">=</span> <span class="n">vocabulary</span><span class="p">[</span><span class="n">token</span><span class="p">]</span>
+    <span class="n">vector</span><span class="p">[</span><span class="n">token_index</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">vector</span>
+</pre></div>
+</div>
+<p>Para o caso da palavra <code class="docutils literal notranslate"><span class="pre">praia</span></code>, o vetor encodado será:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;praia&quot;</span> <span class="pre">:=</span> <span class="pre">[0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">1</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0</span> <span class="pre">0]</span></code></p>
+<p>Nesta etapa, é comum restringir o vocabulário apenas às 20.000 ou 30.000 primeiras palavras mais comuns encontradas nos dados de treinamento. Qualquer conjunto de dados de texto tende a apresentar um número extremamente grande de termos exclusivos, a maioria dos quais aparece apenas uma vez ou duas vezes — indexar esses termos raros resultaria em um espaço de recursos excessivamente grande, onde a maioria dos recursos quase não teria conteúdo de informação.</p>
+<p>Agora, há um detalhe importante aqui que deve ser salientado: um novo token pode não existir no vocabulário indexado. Seu dados de treinamento podem não conter nenhuma instância da palavra “cherimoya”, por exemplo (ou talvez você tenha excluído do seu índice porque era muito raro). Então, durante a predição, se tomarmos token_index = vocabulário[“cherimoya”], obteremos <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>. Para lidar com isso, você deve usar um índice “fora de vocabulário” (abreviado como índice OOV de <em>out of vocabulary</em>) - que se estende para qualquer token que não está presente no vocabulário. Geralmente, adota-se o índice 1. Ao decodificar uma sequência de inteiros de volta em palavras, você substituirá 1 por algo como “[UNK]” (que você chamaria de “token OOV”).</p>
+<p>Por que usar 1 e não 0?. Isso porque 0 é reservado para ser utilizado em outras situações. Há dois tokens especiais que você normalmente usará: o token OOV (índice 1) e o token token de máscara (índice 0). Enquanto o token OOV significa “aqui estava uma palavra que não reconhecemos”, o token de máscara nos diz “ignore-me, não sou uma palavra”. Você o usaria em particular para batchs de dados em sequência: como os batches de dados precisam ser contíguos, todas as sequências em um batch de dados de sequência deve ter o mesmo comprimento, portanto, sequências mais curtas devem ser preenchido para o comprimento da sequência mais longa. Se você quiser fazer um batch de dados com as sequências [5, 7, 124, 4, 89] e [8, 34, 21], teria que ficar assim:</p>
+<p><code class="docutils literal notranslate"><span class="pre">[[5,</span> <span class="pre">7,</span> <span class="pre">124,</span> <span class="pre">4,</span> <span class="pre">89]</span></code>
+<code class="docutils literal notranslate"><span class="pre">[8,</span> <span class="pre">34,</span> <span class="pre">21,</span> <span class="pre">0,</span> <span class="pre">0]]</span></code></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -416,12 +431,19 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="11-02-preparing-data-05.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="11-02-preparing-data-03.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">11.2.4  Usando a camada de TextVectorization</p>
+            <p class="prev-next-title">11.2.2 Tokenização</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="11-02-preparing-data-05.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">11.2.4  Usando a camada de TextVectorization</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Outro teste &#8212; Notas de Estudo - Deep Learning</title>
+    <title>11.2.1 Padronização de textos &#8212; Notas de Estudo - Deep Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Two approaches for representing groups of words: Sets and sequences" href="11-03-two-approaches.html" />
-    <link rel="prev" title="Preparing Data" href="11-02-preparing-data.html" />
+    <link rel="next" title="11.2.2 Tokenização" href="11-02-preparing-data-03.html" />
+    <link rel="prev" title="11.2 Preparing Data" href="11-02-preparing-data-01.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -125,23 +125,43 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="11-01-natural-language.html">
-     Processamento de linguagem natural: a visão panorâmica
+    <a class="reference internal" href="11-01-natural-language-01.html">
+     11.1 Processamento de linguagem natural: a visão panorâmica
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="11-02-preparing-data.html">
-     Preparing Data
+    <a class="reference internal" href="11-01-natural-language-02.html">
+     NLP: adotando Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-02-preparing-data-01.html">
+     11.2 Preparing Data
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Outro teste
+     11.2.1 Padronização de textos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-02-preparing-data-03.html">
+     11.2.2 Tokenização
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-02-preparing-data-04.html">
+     11.2.3 Indexação de vocabulário
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-02-preparing-data-05.html">
+     11.2.4  Usando a camada de TextVectorization
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="11-03-two-approaches.html">
-     Two approaches for representing groups of words: Sets and sequences
+     11.3 Duas abordagens para representar grupo de palavras
     </a>
    </li>
   </ul>
@@ -313,7 +333,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Outro teste</h1>
+                <h1>11.2.1 Padronização de textos</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -325,9 +345,27 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="outro-teste">
-<h1>Outro teste<a class="headerlink" href="#outro-teste" title="Permalink to this headline">#</a></h1>
-<p>Ola</p>
+  <section id="padronizacao-de-textos">
+<h1>11.2.1 Padronização de textos<a class="headerlink" href="#padronizacao-de-textos" title="Permalink to this headline">#</a></h1>
+<p>Considere as seguintes duas sequências:</p>
+<ul class="simple">
+<li><p>“sunset came. i was starting at the Mexico sky. Isnt nature splendid??”</p></li>
+<li><p>“Sunset came; I stared at the México sky. Isn’t nature splendid?”</p></li>
+</ul>
+<p>As sentenças são bastante similares -  de fato, elas são idênticas. Ainda assim, se você converter ambas em byte strings, elas vão ter diferentes representações. Isto porque letras maiúsculas e minúsculas tem codificação distintas, acentos e pontuação e diferentes conjugações do mesmo verbo também.</p>
+<p><em>Padronização de textos</em> é o processo de feature engineering que trata com essas diferenças que você não quer que o modelo tenha que lidar. Estas etapas não são exclusivas de machine learning. Por exemplo, você provavelmente teria que fazer o mesmo em um sistema de busca.</p>
+<p>Alguns dos esquemas de padronização mais simples são a <em>conversão para minúsculas</em> e <em>remoção dos caracteres de pontuação</em>. Aplicando estas duas etapas nas sentenças exemplificadas, obtém-se:</p>
+<ul class="simple">
+<li><p>“sunset came i was staring at the mexico sky isnt nature splendid”</p></li>
+<li><p>“sunset came i stared at the méxico sky isnt nature splendid”</p></li>
+</ul>
+<p>Note como elas estão muito mais parecidas agora. Outra transformação bastante comum é a conversão de caracteres especiais a suas formas padronizadas, tais com as substituições de “é” por “e”, “æ” para “ae” e etc. Nesse exemplo, o token “méxico” sera substituído por “mexico”.</p>
+<p>Por último, um procedimento de padronização mais complexo é o <em>stemming</em>. Esse processo nada mais é do que a unificação de diferentes variações de um mesmo termo (por exemplo, diferentes conjugações de um verbo). Nesse caso, as sentenças pode ser reescritas como:</p>
+<ul class="simple">
+<li><p>“sunset came i [stare] at the mexico sky isnt nature splendid”</p></li>
+<li><p>“sunset came i [stare] at the méxico sky isnt nature splendid”</p></li>
+</ul>
+<p>Com esses procedimentos de padronização, seu modelo irá requerer menos dados para treinamento e generalizará melhor suas entradas. Claro, a padronização também remove uma grande quantidade de informação. Por isso, é importante ter o contexto de modelagem alinhado com o processo de padronização.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -357,17 +395,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="11-02-preparing-data.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="11-02-preparing-data-01.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Preparing Data</p>
+            <p class="prev-next-title">11.2 Preparing Data</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="11-03-two-approaches.html" title="next page">
+    <a class='right-next' id="next-link" href="11-02-preparing-data-03.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Two approaches for representing groups of words: Sets and sequences</p>
+        <p class="prev-next-title">11.2.2 Tokenização</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

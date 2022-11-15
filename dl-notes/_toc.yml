@@ -8,8 +8,11 @@ root: intro
 chapters:
 - file: content/11-deep-learning-for-text/11-00-deep-learning-for-text
   sections:
-  - file: content/11-deep-learning-for-text/11-01-natural-language
+  - file: content/11-deep-learning-for-text/11-01-natural-language-01
   - file: content/11-deep-learning-for-text/11-01-natural-language-02
-  - file: content/11-deep-learning-for-text/11-02-preparing-data
+  - file: content/11-deep-learning-for-text/11-02-preparing-data-01
   - file: content/11-deep-learning-for-text/11-02-preparing-data-02
+  - file: content/11-deep-learning-for-text/11-02-preparing-data-03
+  - file: content/11-deep-learning-for-text/11-02-preparing-data-04
+  - file: content/11-deep-learning-for-text/11-02-preparing-data-05
   - file: content/11-deep-learning-for-text/11-03-two-approaches
