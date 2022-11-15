@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Processamento de linguagem natural: a visão panorâmica &#8212; Notas de Estudo - Deep Learning</title>
+    <title>11.2.4 Usando a camada de TextVectorization &#8212; Notas de Estudo - Deep Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="11-01-natural-language-02.html" />
-    <link rel="prev" title="Deep Learning para Textos" href="11-00-deep-learning-for-text.html" />
+    <link rel="next" title="11.3 Duas abordagens para representar grupo de palavras" href="11-03-two-approaches.html" />
+    <link rel="prev" title="11.2.3 Indexação de vocabulário" href="11-02-preparing-data-04.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -124,24 +124,44 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Processamento de linguagem natural: a visão panorâmica
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-01-natural-language-01.html">
+     11.1 Processamento de linguagem natural: a visão panorâmica
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="11-02-preparing-data.html">
-     Preparing Data
+    <a class="reference internal" href="11-01-natural-language-02.html">
+     NLP: adotando Machine Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-02-preparing-data-01.html">
+     11.2 Preparing Data
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="11-02-preparing-data-02.html">
-     Outro teste
+     11.2.1 Padronização de textos
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-02-preparing-data-03.html">
+     11.2.2 Tokenização
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-02-preparing-data-04.html">
+     11.2.3 Indexação de vocabulário
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     11.2.4  Usando a camada de TextVectorization
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="11-03-two-approaches.html">
-     Two approaches for representing groups of words: Sets and sequences
+     11.3 Duas abordagens para representar grupo de palavras
     </a>
    </li>
   </ul>
@@ -236,7 +256,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/emdemor/Notas de Machine Learning/issues/new?title=Issue%20on%20page%20%2Fcontent/11-deep-learning-for-text/11-01-natural-language.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/emdemor/Notas de Machine Learning/issues/new?title=Issue%20on%20page%20%2Fcontent/11-deep-learning-for-text/11-02-preparing-data-05.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -264,7 +284,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/content/11-deep-learning-for-text/11-01-natural-language.md"
+        <a href="../../_sources/content/11-deep-learning-for-text/11-02-preparing-data-05.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -313,7 +333,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Processamento de linguagem natural: a visão panorâmica</h1>
+                <h1>11.2.4  Usando a camada de TextVectorization</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -325,10 +345,63 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="processamento-de-linguagem-natural-a-visao-panoramica">
-<h1>Processamento de linguagem natural: a visão panorâmica<a class="headerlink" href="#processamento-de-linguagem-natural-a-visao-panoramica" title="Permalink to this headline">#</a></h1>
-<p>Na ciência da computação, nós nos referimos para linguagens humanas como o inglês ou mandarim, como uma linguagem natural, para distinguir daquelas linguagens que foram desenhadas para máquinas, como Assembly, LIST ou XML. Nas linguagens de máquina, as regras foram pensadas por um engenheiro humano para serem o alicerce do funcionamento da linguagem. Por outro lado, as linguagens naturais se desenvolveram por um processo evolutivo, muito similar à processos orgânicos - por isso o adjetivo “natural”. Suas regras foram formalizadas à posteriori e, por serem estruturas muito vivas e dinâmicas, são frequentemente negligenciadas. Como resultado, enquanto as linguagens de máquina são altamente estruturadas e rigorosas, a linguagem natural é muito mais complexa por ser ambígua, caótica e estar em constante mudança.</p>
-<p>Criar algoritmos que façam sentido para a linguagem natural é um grande desafio: linguagem, e textos em particular, são a base da maioria das nossas comunicações e nossa produção cultural. A linguagem é a forma como armazenamos todos os nossos conhecimentos. Nossos próprios pensamentos são construídos sobre a linguagem. No entanto, a capacidade de fazer as máquinas entenderem a linguagem natural é uma tarefa que há muito tempo tem ocupado o tempo de milhares de cientistas. Muito porque, por muito tempo, as tentativas se baseavam em encontrar “as regras no inglês”, da mesma forma como se é possível escrever as regras do LISP. Esses primeiros profissionais, muitas vezes especialistas da “linguística aplicada” em associação à engenheiros, criaram um conjunto complexo de regras para realizar tarefas básicas de tradução ou simples chatbots. Como exemplo, não podemos deixar de comentar do famoso programa ELIZA da década de 1960, que usava a correspondência de padrões para levar adiante uma conversa muito básica. Porém, a linguagem é uma estrutura rebelde: não é facilmente flexível a formalização. Após várias décadas de esforço, as capacidades de sistemas desse tipo pouco evoluíram.</p>
+  <section id="usando-a-camada-de-textvectorization">
+<h1>11.2.4  Usando a camada de TextVectorization<a class="headerlink" href="#usando-a-camada-de-textvectorization" title="Permalink to this headline">#</a></h1>
+<p>Cada um dos passos comentados anteriormente pode facilmente ser implementado em Python puro. Porém, essa abordagem não seria muito performática. Na prática, a forma mais eficiente é utilizar a camada <code class="docutils literal notranslate"><span class="pre">TextVectorization</span></code> do Keras, que é rápida e eficiente e pode ser inserida diretamente em uma pipeline <code class="docutils literal notranslate"><span class="pre">tf.data</span></code> ou um Keras model.</p>
+<p>Uma camada <code class="docutils literal notranslate"><span class="pre">TextVectorization</span></code> se parece como:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">TextVectorization</span>
+
+<span class="n">text_vectorization</span> <span class="o">=</span> <span class="n">TextVectorization</span><span class="p">(</span><span class="n">output_mode</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note que é possível configurar o formato da saída da camada. No exemplo, foi configurado para retornar sequência de palavras encodadas por índices inteiros.</p>
+<p>Por padrão, a camada <code class="docutils literal notranslate"><span class="pre">TextVectorization</span></code> irá adotar “conversão para minúscula” e “remoção de pontuação” como etapas de padronização. Já para tokenização, utiliza-se por padrão a “separação por espaço”. Mas é importante ressaltar que é possível fornecer funções customizadas para cada um desses procedimentos. Essas funções devem operar sobre tensores <code class="docutils literal notranslate"><span class="pre">tf.string</span></code> e não strings regulares de Python. Por exemplo, a sintaxe para funções customizadas é:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+
+<span class="k">def</span> <span class="nf">custom_standardization_fn</span><span class="p">(</span><span class="n">string_tensor</span><span class="p">):</span>
+    <span class="n">lowercase_string</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">string_tensor</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">regex_replace</span><span class="p">(</span>
+        <span class="n">lowercase_string</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">)</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">custom_split_fn</span><span class="p">(</span><span class="n">string_tensor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">strings</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">string_tensor</span><span class="p">)</span>
+
+
+<span class="n">text_vectorization</span> <span class="o">=</span> <span class="n">TextVectorization</span><span class="p">(</span>
+    <span class="n">output_mode</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span>
+    <span class="n">standardize</span><span class="o">=</span><span class="n">custom_standardization_fn</span><span class="p">,</span>
+    <span class="n">split</span><span class="o">=</span><span class="n">custom_split_fn</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Para indexar o vocabulário de um corpus de texto, basta chamar o método <code class="docutils literal notranslate"><span class="pre">adapt()</span></code> da camada com um objeto <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> que retorna strings, ou somente com uma lista de strings Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="p">[</span>
+ <span class="s2">&quot;I write, erase, rewrite&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;Erase again, and then&quot;</span><span class="p">,</span>
+ <span class="s2">&quot;A poppy blooms.&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+<span class="n">text_vectorization</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Você pode obter o vocabulário chamando o método <code class="docutils literal notranslate"><span class="pre">get_vocabulary()</span></code> - isso pode ser útil se você precisar converter o texto encodado como sequência de inteiros em palavras novamente. As primeiras duas entradas do vocabulário são o token de máscara (índice 0) e o token de OOV (índice 1). Entradas em listas de vocabulário são ordenadas por frequência. Assim, em um corpus com dados do mundo real, palavras muito comuns viriam primeiro.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vocabulary</span> <span class="o">=</span> <span class="n">text_vectorization</span><span class="o">.</span><span class="n">get_vocabulary</span><span class="p">()</span>
+<span class="n">test_sentence</span> <span class="o">=</span> <span class="s2">&quot;I write, rewrite, and still rewrite again&quot;</span>
+<span class="n">encoded_sentence</span> <span class="o">=</span> <span class="n">text_vectorization</span><span class="p">(</span><span class="n">test_sentence</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;encoded_sentence =&quot;</span><span class="p">,</span><span class="n">encoded_sentence</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">encoded_sentence</span> <span class="pre">=</span> <span class="pre">tf.Tensor([</span> <span class="pre">7</span>&#160; <span class="pre">3</span>&#160; <span class="pre">5</span>&#160; <span class="pre">9</span>&#160; <span class="pre">1</span>&#160; <span class="pre">5</span> <span class="pre">10],</span> <span class="pre">shape=(7,),</span> <span class="pre">dtype=int64)</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inverse_vocab</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">vocabulary</span><span class="p">))</span>
+<span class="n">decoded_sentence</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">inverse_vocab</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">encoded_sentence</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;decoded_sentence =&quot;</span><span class="p">,</span><span class="n">decoded_sentence</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">decoded_sentence</span> <span class="pre">=</span> <span class="pre">i</span> <span class="pre">write</span> <span class="pre">rewrite</span> <span class="pre">and</span> <span class="pre">[UNK]</span> <span class="pre">rewrite</span> <span class="pre">again</span></code></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -358,17 +431,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="11-00-deep-learning-for-text.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="11-02-preparing-data-04.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Deep Learning para Textos</p>
+            <p class="prev-next-title">11.2.3 Indexação de vocabulário</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="11-01-natural-language-02.html" title="next page">
+    <a class='right-next' id="next-link" href="11-03-two-approaches.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title">11.3 Duas abordagens para representar grupo de palavras</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

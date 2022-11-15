@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>11.3 Duas abordagens para representar grupo de palavras &#8212; Notas de Estudo - Deep Learning</title>
+    <title>11.2.2 Tokenização &#8212; Notas de Estudo - Deep Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="11.2.4 Usando a camada de TextVectorization" href="11-02-preparing-data-05.html" />
+    <link rel="next" title="11.2.3 Indexação de vocabulário" href="11-02-preparing-data-04.html" />
+    <link rel="prev" title="11.2.1 Padronização de textos" href="11-02-preparing-data-02.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -143,8 +144,8 @@ const thebe_selector_output = ".output, .cell_output"
      11.2.1 Padronização de textos
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="11-02-preparing-data-03.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      11.2.2 Tokenização
     </a>
    </li>
@@ -158,8 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
      11.2.4  Usando a camada de TextVectorization
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="11-03-two-approaches.html">
      11.3 Duas abordagens para representar grupo de palavras
     </a>
    </li>
@@ -255,7 +256,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/emdemor/Notas de Machine Learning/issues/new?title=Issue%20on%20page%20%2Fcontent/11-deep-learning-for-text/11-03-two-approaches.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/emdemor/Notas de Machine Learning/issues/new?title=Issue%20on%20page%20%2Fcontent/11-deep-learning-for-text/11-02-preparing-data-03.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -283,7 +284,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../../_sources/content/11-deep-learning-for-text/11-03-two-approaches.md"
+        <a href="../../_sources/content/11-deep-learning-for-text/11-02-preparing-data-03.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -320,60 +321,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bag-of-words-e-word-embeddings">
-   Bag-of-words e word-embeddings
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>11.3 Duas abordagens para representar grupo de palavras</h1>
+                <h1>11.2.2 Tokenização</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bag-of-words-e-word-embeddings">
-   Bag-of-words e word-embeddings
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -381,12 +345,25 @@ title="Print to PDF"
                 
               <div>
                 
-  <section id="duas-abordagens-para-representar-grupo-de-palavras">
-<h1>11.3 Duas abordagens para representar grupo de palavras<a class="headerlink" href="#duas-abordagens-para-representar-grupo-de-palavras" title="Permalink to this headline">#</a></h1>
-<section id="bag-of-words-e-word-embeddings">
-<h2>Bag-of-words e word-embeddings<a class="headerlink" href="#bag-of-words-e-word-embeddings" title="Permalink to this headline">#</a></h2>
-<p>Teste</p>
-</section>
+  <section id="tokenizacao">
+<h1>11.2.2 Tokenização<a class="headerlink" href="#tokenizacao" title="Permalink to this headline">#</a></h1>
+<p>Uma vez que o texto está padronizado, você precisa dividi-lo em unidades menores para serem vetorizadas. Essa etapa é chamada de <em>tokenização</em>. Voc^pode fazer isso em trê formas distintas:</p>
+<ul class="simple">
+<li><p>Tokenização <em>n</em>-grama: onde os tokens são grupos de <em>N</em> palavras consecutivas. Por exemplo, “o gato” ou “ele era” são tokens 2-grama (chamados de bigramas).</p></li>
+<li><p>Tokenização à nível de palavras: aqui, os tokens são separados por espaço (ou pontuação). Uma variante dessa abordagem consiste em dividir as palavras em sub-palavras (quando for aplicável).</p></li>
+<li><p>Tokenização à nível de caractere: onde cada caractere é seu próprio token. Na prática, esse esquema é raramente utilizado, sendo funcional apenas em contextos muito específicos, como geração de textos ou reconhecimento de fala.</p></li>
+</ul>
+<p>Em geral, você vai sempre usar tokenização a nível de palavras ou N-gramas. Existem dois tipos de modelos de processamento de texto: aquele que leva em consideração a ordem das palavras, chamados de <em>modelos de sequência</em>; e aqueles que tratam as palavras da entrada como um conjunto, descartando a ordem original. Esses são chamados de <em>bag-of-words</em>. Se você estiver construindo um modelo de sequência, você vai utilizar a tokenização por palavras. Porém, caso estiver trabalhando com bag-of-words, talvez seja melhor utilizar a tokenização por N-gramas. N-gramas representam uma forma artificial de considerar localmente uma quantidade de informação sobre a ordem das palavras no modelo.</p>
+<div class="admonition-entendendo-n-gramas-e-bag-of-words admonition">
+<p class="admonition-title">Entendendo N-gramas e bag-of-words</p>
+<p>N-gramas são grupos de até N palavras consecutivas que você pode extrair de uma sequência. O mesmo conceito pode também ser aplicado a caracteres ao invés de palavras.</p>
+<p>Aqui um simples exemplo. Considere a sentença “the car sat on the mat”. Ela pode ser decomposta no seguinte conjunto de 2-gramas:</p>
+<p><code class="docutils literal notranslate"><span class="pre">{&quot;the&quot;,</span> <span class="pre">&quot;the</span> <span class="pre">cat&quot;,</span> <span class="pre">&quot;cat&quot;,</span> <span class="pre">&quot;cat</span> <span class="pre">sat&quot;,</span> <span class="pre">&quot;sat&quot;,</span> <span class="pre">&quot;sat</span> <span class="pre">on&quot;,</span> <span class="pre">&quot;on&quot;,</span> <span class="pre">&quot;on</span> <span class="pre">the&quot;,</span> <span class="pre">&quot;the</span> <span class="pre">mat&quot;,</span> <span class="pre">&quot;mat&quot;}</span></code></p>
+<p>Pode-se também decompor no seguinte conjunto de 3-gramas:</p>
+<p><code class="docutils literal notranslate"><span class="pre">{&quot;the&quot;,</span> <span class="pre">&quot;the</span> <span class="pre">cat&quot;,</span> <span class="pre">&quot;cat&quot;,</span> <span class="pre">&quot;cat</span> <span class="pre">sat&quot;,</span> <span class="pre">&quot;the</span> <span class="pre">cat</span> <span class="pre">sat&quot;,</span>&#160; <span class="pre">&quot;sat&quot;,</span> <span class="pre">&quot;sat</span> <span class="pre">on&quot;,</span> <span class="pre">&quot;on&quot;,</span> <span class="pre">&quot;cat</span> <span class="pre">sat</span> <span class="pre">on&quot;,</span> <span class="pre">&quot;on</span> <span class="pre">the&quot;,</span>&#160; <span class="pre">&quot;sat</span> <span class="pre">on</span> <span class="pre">the&quot;,</span> <span class="pre">&quot;the</span> <span class="pre">mat&quot;,</span> <span class="pre">&quot;mat&quot;,</span> <span class="pre">&quot;on</span> <span class="pre">the</span> <span class="pre">mat&quot;}</span></code></p>
+<p>Esses conjuntos são chamadas de <em>bag-of-2-grams</em> e <em>bag-of-3-grams</em> respectivamente. O termo <em>bag</em> refere-se ao fato de que você está lidando com um conjunto de tokes e não com uma lista sequencial; ou seja, não existe ma ordem específica.</p>
+<p>Por conta dos modelos de <em>bag</em> não preservarem a ordem dos tokens, eles tendem a ser usados em modelos de processamento de linguagem mais superficiais e não em abordagens de deep learning. Extrair N-gramas é uma forma de feature_engineering e os modelos de deep learning eliminam a necessidade dessa etapa, por aprendem organicamente durante o treinamento. CNNs unidimensionais, RNNs, e Transformers são capazes de aprender representações para grupos de palavras e personagens sem ser explicitamente informado sobre a existência de tais grupos, procurando em sequências contínuas de palavras ou caracteres.</p>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -416,12 +393,19 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="11-02-preparing-data-05.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="11-02-preparing-data-02.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">11.2.4  Usando a camada de TextVectorization</p>
+            <p class="prev-next-title">11.2.1 Padronização de textos</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="11-02-preparing-data-04.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">11.2.3 Indexação de vocabulário</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

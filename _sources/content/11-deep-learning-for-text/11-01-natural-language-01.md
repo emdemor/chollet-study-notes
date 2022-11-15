@@ -1,4 +1,4 @@
-## Processamento de linguagem natural: a visão panorâmica
+## 11.1 Processamento de linguagem natural: a visão panorâmica
 
 Na ciência da computação, nós nos referimos para linguagens humanas como o inglês ou mandarim, como uma linguagem natural, para distinguir daquelas linguagens que foram desenhadas para máquinas, como Assembly, LIST ou XML. Nas linguagens de máquina, as regras foram pensadas por um engenheiro humano para serem o alicerce do funcionamento da linguagem. Por outro lado, as linguagens naturais se desenvolveram por um processo evolutivo, muito similar à processos orgânicos - por isso o adjetivo "natural". Suas regras foram formalizadas à posteriori e, por serem estruturas muito vivas e dinâmicas, são frequentemente negligenciadas. Como resultado, enquanto as linguagens de máquina são altamente estruturadas e rigorosas, a linguagem natural é muito mais complexa por ser ambígua, caótica e estar em constante mudança.
 
